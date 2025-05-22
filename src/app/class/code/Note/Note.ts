@@ -15,7 +15,7 @@ export class Note implements DraftCreator {
     private title: NoteTitle,
     private isImportant: boolean,
     private deadline: Deadline | null,
-    public author: number,
+    public author: User,
     private images: NoteImage[] = [],
     private tags: Tag[] = [],
     public sharedToGroups: Group[] = [],
@@ -31,6 +31,7 @@ export class Note implements DraftCreator {
   }
 
   public createDraft(): Note {
+    console.log("Створю чернетку нотатки");
     const clonedTags = this.tags.map((tag) => tag.clone());
 
     return new Note(

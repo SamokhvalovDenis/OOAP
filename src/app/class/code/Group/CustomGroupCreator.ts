@@ -3,7 +3,7 @@ import { GroupCreator } from "./GroupCreator";
 import { Groups } from "./Groups";
 import { CustomGroup } from "./CustomGroup";
 
-class CustomGroupCreator implements GroupCreator {
+export class CustomGroupCreator implements GroupCreator {
   createGroup(): Group {
     return new CustomGroup(Groups.KN12, 0, "Group for AI project"); 
   }

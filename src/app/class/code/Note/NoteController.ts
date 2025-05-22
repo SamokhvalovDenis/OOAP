@@ -4,6 +4,10 @@ import { Note } from './Note';
 import { NotifFactory } from '../Notification/NotifFactory';
 import { Group } from '../Group/Group';
 import { User } from '../User/User';
+import { Deadline } from '../../Prototype/Deadline';
+import { NoteTitle } from './NoteTitle';
+import { NoteImage } from '../../Factory_method/NoteImage';
+import { Tag } from './Tag';
 
 export class NoteController {
   private static instance: NoteController;
@@ -19,16 +23,25 @@ export class NoteController {
 
   public static getInstance(notifFactory?: NotifFactory): NoteController {
     if (!NoteController.instance) {
+      console.log("Створюю NoteController");
       NoteController.instance = new NoteController([], notifFactory);
     }
+    else console.log("NoteController вже створений");
     return NoteController.instance;
   }
 
-  public createNote(): void {}
+  public createNote(id: number, text: string, title: NoteTitle, isImportant: boolean, deadline: Deadline | null, author: User, images: NoteImage[], tags: Tag[],): void {
+    const note = new Note(id, false, text, new Date(), title, isImportant, deadline, author, images, tags, [], []);
+    this.notes.push(note);
+  }
 
-  public editNode(): void {}
+  public editNote(note: Note): Note {
+    const draft = note.createDraft()
+    this.notes.push(draft);
+    return draft;
+  }
 
-  public deleteNode(): void {}
+  public deleteNote(): void {}
 
   public viewNotes(): void {}
 
@@ -44,10 +57,6 @@ export class NoteController {
 
   public checkRights(user: User, note: Note): boolean {
     return true;
-  }
-
-  public createDraft(note: Note): Note {
-    return note.createDraft();
   }
 
   public showEditable(): void {}
