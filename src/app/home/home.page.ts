@@ -77,12 +77,12 @@ export class HomePage implements OnInit {
 
     //Створення поштової ноифікації
     const emailNotif = new EmailFactory();
-    const email = emailNotif.createNotification("Ви створили поштове повідомлення");
+    const email = emailNotif.createNotification("Ви створили нове поштове повідомлення");
     console.log("Нотифікація: ", email);
 
     //Створення пуш ноифікації
     const pushNotif = new PushFactory();
-    const push = pushNotif.createNotification("Ви створили push повідомлення");
+    const push = pushNotif.createNotification("Ви створили нове push повідомлення");
     console.log("Нотифікація: ", push);
 
   }
