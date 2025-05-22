@@ -1,7 +1,6 @@
 import { User } from "./User";
 import { NoteController } from "../Note/NoteController";
-import { Groups } from "../Group/Groups";
-import { Role } from "./Role";
+import { Group } from "../Group/Group";
 
 export class Teacher extends User {
   constructor(
@@ -10,7 +9,7 @@ export class Teacher extends User {
     emailAddres: string,
     password: string,
     noteController: NoteController = NoteController.getInstance(),
-    public groups: Groups[]
+    public groups: Group[]
   ) {
     super(
       firstName,

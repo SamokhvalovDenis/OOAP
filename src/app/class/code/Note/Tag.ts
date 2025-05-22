@@ -9,6 +9,7 @@ export class Tag implements Cloneable{
   ){}
 
   public clone(): Tag {
+    console.log("Створю копію тегу");
     return new Tag(this.name, this.color, this.font, this.iconPath);
   }
 }
